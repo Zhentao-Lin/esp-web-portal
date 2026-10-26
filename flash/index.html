@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>固件在线烧录</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="../">← 返回首页</a>
+    <nav>
+      <a href="../docs/">📚 教程</a>
+      <a id="releases-link" href="#" target="_blank" rel="noopener">📦 Releases</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>⚡ 固件在线烧录</h1>
+  <p class="lead">选择产品和固件版本，通过 USB 连接开发板，在浏览器里一键烧录。无需安装 Arduino IDE / esptool。</p>
+
+  <div id="browser-warn" class="alert warn hidden">
+    ⚠️ 当前浏览器不支持 Web Serial API。请使用最新版 <b>Chrome / Edge</b> 浏览器（桌面端或 Android Chrome）。
+  </div>
+
+  <section class="panel">
+    <h2>① 选择固件</h2>
+    <div class="form-row">
+      <label for="product-sel">产品</label>
+      <select id="product-sel"></select>
+    </div>
+    <div id="product-info" class="meta"></div>
+    <div class="form-row">
+      <label for="version-sel">固件版本</label>
+      <select id="version-sel"></select>
+    </div>
+    <div id="version-info" class="meta"></div>
+
+    <details id="files-detail">
+      <summary>查看/替换要烧录的 bin 文件</summary>
+      <div id="files-list" class="files"></div>
+      <p class="hint">如果固件链接因跨域问题无法在线拉取，可以先把 bin 下载到本地，然后点下方"选择本地文件"替换（文件名需与原文件一致）。</p>
+      <div class="local-picker">
+        <label class="btn btn-ghost">
+          选择本地 bin 文件
+          <input type="file" id="local-files" multiple accept=".bin" hidden>
+        </label>
+        <span id="local-files-status" class="hint"></span>
+      </div>
+    </details>
+
+    <div class="form-row">
+      <label for="baud-sel">波特率</label>
+      <select id="baud-sel">
+        <option value="115200">115200（最稳）</option>
+        <option value="460800" selected>460800（推荐）</option>
+        <option value="921600">921600（最快）</option>
+      </select>
+    </div>
+
+    <div class="form-row inline">
+      <label><input type="checkbox" id="erase-all" checked> 烧录前擦除整片 Flash</label>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>② 连接开发板</h2>
+    <ol class="steps">
+      <li>用 USB 数据线连接电脑和开发板（注意：<b>必须是能传数据的线</b>，不是只能充电的线）。</li>
+      <li>如果是 ESP32 开发板，按住 <b>BOOT</b> 键不放。部分板子需要先按 EN/RST 再按 BOOT。</li>
+      <li>点击下方"连接"按钮，在浏览器弹窗里选择你的开发板对应的串口。</li>
+    </ol>
+    <button id="btn-connect" class="btn btn-primary" disabled>🔌 连接并烧录</button>
+  </section>
+
+  <section class="panel" id="log-panel">
+    <h2>③ 烧录日志</h2>
+    <div id="terminal" class="terminal"></div>
+    <div class="progress-wrap hidden" id="progress-wrap">
+      <div class="progress-bar"><div id="progress-fill"></div></div>
+      <div id="progress-text">0%</div>
+    </div>
+    <div id="status" class="status"></div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  基于 <a href="https://github.com/espressif/esptool-js" target="_blank" rel="noopener">esptool-js</a> · Web Serial API
+</footer>
+
+<script src="config.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

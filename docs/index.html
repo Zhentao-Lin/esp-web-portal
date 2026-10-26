@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>产品文档中心</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css" title="light">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css">
+<style>
+  :root {
+    --theme-color: #0ea5e9;
+    --sidebar-name-color: #0f172a;
+    --base-font-size: 15px;
+  }
+  .flash-badge {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 3px 10px;
+    background: #0ea5e9;
+    color: #fff;
+    border-radius: 12px;
+    font-size: 12px;
+    text-decoration: none;
+    vertical-align: middle;
+  }
+  .flash-badge:hover { background:#0284c7; color:#fff; text-decoration:none; }
+</style>
+</head>
+<body>
+<div id="app">加载中...</div>
+
+<script>
+window.$docsify = {
+  name: '产品文档中心',
+  repo: 'your-name/your-firmware', // 改成你的 GitHub 仓库
+  homepage: 'README.md',
+  loadSidebar: true,
+  subMaxLevel: 2,
+  loadNavbar: true,
+  auto2top: true,
+  alias: {
+    '/.*/_sidebar.md': '/_sidebar.md',
+    '/.*/_navbar.md': '/_navbar.md',
+  },
+  search: {
+    placeholder: '搜索文档...',
+    noData: '没有找到结果',
+    depth: 4,
+  },
+  plugins: [
+    // 自动给"在线烧录"链接加上正确相对路径
+    function (hook) {
+      hook.doneEach(() => {
+        // 所有外链已在 markdown 里写死，这里留作扩展点
+      });
+    }
+  ],
+};
+</script>
+
+<!-- Docsify 核心 -->
+<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+<!-- 代码高亮 -->
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-cpp.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+</body>
+</html>

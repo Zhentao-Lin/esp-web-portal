@@ -1,0 +1,3 @@
+- [🏠 首页](/)
+- [⚡ 在线烧录](/flash/)
+- [📦 Releases](https://github.com/your-name/your-firmware/releases)

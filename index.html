@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>产品支持中心</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; background: #f6f8fb; color: #1f2937; line-height: 1.6; }
+  header { background: linear-gradient(135deg,#0ea5e9,#6366f1); color:#fff; padding:64px 24px 48px; text-align:center; }
+  header h1 { font-size: 40px; font-weight: 700; margin-bottom: 12px; }
+  header p { font-size: 18px; opacity: .9; max-width: 640px; margin: 0 auto; }
+  .container { max-width: 1080px; margin: -32px auto 48px; padding: 0 24px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 24px; }
+  .card { background:#fff; border-radius:16px; padding:28px; box-shadow:0 4px 24px rgba(15,23,42,.06); transition: transform .2s, box-shadow .2s; text-decoration: none; color: inherit; display:flex; flex-direction:column; }
+  .card:hover { transform: translateY(-4px); box-shadow:0 12px 32px rgba(15,23,42,.1); }
+  .card .icon { font-size: 40px; margin-bottom: 16px; }
+  .card h2 { font-size:20px; margin-bottom:8px; color:#0f172a; }
+  .card p { color:#64748b; font-size:14px; flex:1; }
+  .card .arrow { margin-top:16px; color:#0ea5e9; font-weight:600; font-size:14px; }
+  .section { margin-top:56px; }
+  .section h2 { font-size:24px; margin-bottom:16px; color:#0f172a; }
+  .tip { background:#ecfeff; border-left:4px solid #06b6d4; padding:16px 20px; border-radius:8px; color:#0e7490; font-size:14px; margin-top:32px; }
+  footer { text-align:center; color:#94a3b8; font-size:13px; padding:24px 0 40px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>产品支持中心</h1>
+  <p>教程文档、固件下载、一键烧录 —— 一站式为你准备好</p>
+</header>
+
+<div class="container">
+  <div class="grid">
+    <a class="card" href="docs/">
+      <div class="icon">📚</div>
+      <h2>教程文档</h2>
+      <p>每个产品的快速上手、接线说明、功能介绍、常见问题等都在这里。</p>
+      <div class="arrow">进入文档 →</div>
+    </a>
+    <a class="card" href="flash/">
+      <div class="icon">⚡</div>
+      <h2>在线烧录工具</h2>
+      <p>选择产品和固件版本，连接开发板，浏览器里一键烧录，无需安装任何工具。</p>
+      <div class="arrow">打开烧录页 →</div>
+    </a>
+    <a class="card" id="releases-card" href="#">
+      <div class="icon">📦</div>
+      <h2>固件发布 / 源码</h2>
+      <p>所有固件版本与源码工程都发布在 GitHub Releases，可直接下载 bin 文件。</p>
+      <div class="arrow">前往 Releases →</div>
+    </a>
+  </div>
+
+  <div class="tip">
+    💡 烧录功能基于 Web Serial API，需要使用 <b>Chrome / Edge</b> 等 Chromium 内核浏览器访问本页面。
+  </div>
+</div>
+
+<footer>© 你的公司/项目名 · Powered by Docsify + esptool-js</footer>
+
+<script>
+  // 在这里填你的 GitHub releases 页面地址
+  window.RELEASES_URL = "https://github.com/your-name/your-firmware/releases";
+  document.getElementById('releases-card').href = window.RELEASES_URL;
+</script>
+
+</body>
+</html>
